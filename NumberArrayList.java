@@ -11,26 +11,22 @@ public class NumberArrayList {
     }
 
     public int add(int newNum){ //add a new value to array and return its index
+        int indexOfNew=0;
        for(int x: myArray){
-           if(myArray[x]==null){
+           if(myArray[x]==0){
                myArray[x] = newNum;
-               return x;
+               indexOfNew =  x;
            }
        }
+       return indexOfNew;
     }
 
     public int size(){ //return num of elems in my array
-        int counter  = 0;
-        for(int index : myArray){
-            if(myArray[index]!=null){
-                counter++;
-            }
-        }
-        return counter;
+        return myArray.length-1;
     }
 
     public int[] find(int number){
-        int[] indicesOfNumbersFound = new int[myArray.size()] ;
+        int[] indicesOfNumbersFound = new int[myArray.length-1];
         int indOfNumFoundArr = 0;
         for (int ind: myArray){
             if (myArray[ind] == number){
@@ -42,7 +38,7 @@ public class NumberArrayList {
     }
 
     public int getLargest(){
-        int largestNum;
+        int largestNum=0;
         for(int ind: myArray){
             if(ind ==0){
                 largestNum = myArray[ind] ;
@@ -53,12 +49,12 @@ public class NumberArrayList {
                 }
             }
         }
-        if(myArray.length()!=0){
+        if(myArray.length!=0){
             return largestNum; }
         else{return -1;}    }
 
     public int getSmallest(){
-        int smallestNum;
+        int smallestNum=0;
         for(int ind: myArray){
             if(ind ==0){
                 smallestNum = myArray[ind] ;
@@ -69,7 +65,7 @@ public class NumberArrayList {
                 }
             }
         }
-        if(myArray.length()!=0){
+        if(myArray.length==0){
         return smallestNum; }
         else{return -1;}
     }
@@ -79,15 +75,16 @@ public class NumberArrayList {
         for(int ind : myArray){
             total += myArray[ind];
         }
-        if (myArray.length()!=0){
-        return total/myArray.length(); }
+        if (myArray.length!=0){
+        return total/(myArray.length-1); }
         else {return -1;}
     }
     @Override
     public String toString() {
         String arrString = "";
         for( int index: myArray){
-            arrString.concat(myArray[index]+", ")
+            arrString.concat(myArray[index]+", ");
         }
+        return arrString;
     }
 }
